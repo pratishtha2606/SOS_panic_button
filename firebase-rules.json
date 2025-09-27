@@ -1,0 +1,48 @@
+{
+  "rules": {
+    "emergency_alerts": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$alertId": {
+        ".validate": "newData.hasChildren(['name', 'latitude', 'longitude', 'timestamp', 'deviceId', 'message', 'contacts', 'acknowledged'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "latitude": {
+          ".validate": "newData.isNumber() && newData.val() >= -90 && newData.val() <= 90"
+        },
+        "longitude": {
+          ".validate": "newData.isNumber() && newData.val() >= -180 && newData.val() <= 180"
+        },
+        "timestamp": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        "deviceId": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "message": {
+          ".validate": "newData.isString()"
+        },
+        "contacts": {
+          ".validate": "newData.hasChildren()"
+        },
+        "acknowledged": {
+          ".validate": "newData.isBoolean()"
+        },
+        "ackBy": {
+          ".validate": "newData.isString()"
+        },
+        "ackTime": {
+          ".validate": "newData.isNumber()"
+        }
+      }
+    },
+    "responder_tokens": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "$responderId": {
+        ".validate": "newData.isString()"
+      }
+    }
+  }
+}

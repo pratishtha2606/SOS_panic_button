@@ -1,0 +1,14 @@
+{
+  "name": "send-notifications",
+  "version": "1.0.0",
+  "description": "Firebase Cloud Function to send SMS/push notifications for emergency alerts",
+  "main": "index.js",
+  "dependencies": {
+    "firebase-functions": "^4.5.0",
+    "firebase-admin": "^11.11.0",
+    "twilio": "^4.19.0"
+  },
+  "engines": {
+    "node": "18"
+  }
+}
